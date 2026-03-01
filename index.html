@@ -36,7 +36,6 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            overflow: hidden;
         }
         
         .bg-animation::before {
@@ -84,8 +83,8 @@
         .logo-icon { font-size: 32px; -webkit-text-fill-color: initial; }
         
         nav { display: flex; gap: 30px; align-items: center; }
-        nav a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: var(--text); }
+        nav a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; cursor: pointer; }
+        nav a:hover, nav a.active { color: var(--text); }
         
         .btn {
             padding: 10px 24px;
@@ -108,26 +107,14 @@
             box-shadow: 0 10px 40px rgba(99, 102, 241, 0.4);
         }
         
-        .btn-outline {
-            background: transparent;
-            border: 2px solid rgba(255,255,255,0.2);
-            color: var(--text);
-        }
-        
-        .btn-outline:hover {
-            border-color: var(--primary);
-            background: rgba(99, 102, 241, 0.1);
-        }
-        
         .hero {
-            min-height: 90vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 60px 20px;
-            position: relative;
         }
         
         .hero-badge {
@@ -179,23 +166,11 @@
             animation: fadeInUp 0.6s ease 0.3s both;
         }
         
-        .hero-stats {
-            display: flex;
-            gap: 60px;
-            margin-top: 80px;
-            animation: fadeInUp 0.6s ease 0.4s both;
-        }
+        .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
         
-        .stat { text-align: center; }
-        .stat-value { font-size: 40px; font-weight: 800; color: var(--primary); }
-        .stat-label { color: var(--text-muted); font-size: 14px; }
-        
-        .features { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
-        .features-alt { background: var(--dark-light); }
-        
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 40px; font-weight: 800; margin-bottom: 16px; }
-        .section-title p { color: var(--text-muted); font-size: 18px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 36px; font-weight: 800; margin-bottom: 12px; }
+        .section-title p { color: var(--text-muted); font-size: 16px; }
         
         .features-grid {
             display: grid;
@@ -229,10 +204,9 @@
             margin-bottom: 20px;
         }
         
-        .feature-card h3 { font-size: 22px; margin-bottom: 12px; }
-        .feature-card p { color: var(--text-muted); font-size: 15px; }
+        .feature-card h3 { font-size: 20px; margin-bottom: 10px; }
+        .feature-card p { color: var(--text-muted); font-size: 14px; }
         
-        .comparison { padding: 100px 40px; background: var(--dark-light); }
         .comparison-table { overflow-x: auto; }
         
         table {
@@ -243,34 +217,32 @@
         }
         
         th, td {
-            padding: 16px;
+            padding: 14px 16px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
         }
         
-        th { background: var(--dark); font-weight: 700; }
+        th { background: var(--dark-light); font-weight: 700; }
         th:first-child { text-align: left; }
         td:first-child { text-align: left; font-weight: 500; }
         
-        .check { color: var(--green); font-size: 20px; }
-        .cross { color: var(--red); font-size: 20px; }
-        
-        .code-section { padding: 100px 40px; }
-        
-        .code-container { max-width: 900px; margin: 0 auto; }
+        .check { color: var(--green); }
+        .cross { color: var(--red); }
         
         .code-block {
             background: #0a0a0a;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .code-header {
             padding: 16px 24px;
             background: rgba(255,255,255,0.05);
             display: flex;
-            align-items: center;
             gap: 8px;
         }
         
@@ -282,35 +254,30 @@
         .code-content {
             padding: 24px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.8;
-            overflow-x: auto;
         }
-        
-        .install { padding: 100px 40px; text-align: center; }
         
         .install-box {
             max-width: 700px;
             margin: 0 auto;
             background: var(--dark-light);
             border-radius: 24px;
-            padding: 50px;
+            padding: 40px;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        
-        .install h2 { font-size: 36px; margin-bottom: 16px; }
-        .install p { color: var(--text-muted); margin-bottom: 30px; }
         
         .install-code {
             background: #0a0a0a;
             border-radius: 12px;
-            padding: 20px 30px;
+            padding: 20px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
+            font-size: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 20px;
+            margin-top: 20px;
         }
         
         .copy-btn {
@@ -321,23 +288,90 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
             white-space: nowrap;
         }
         
-        .copy-btn:hover { background: var(--primary-dark); }
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
         
-        footer { padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: var(--text-muted); }
+        .blog-card {
+            background: var(--dark-light);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+        
+        .blog-date {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        
+        .blog-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .blog-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* Docs Section */
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .doc-card {
+            background: var(--dark-light);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s;
+            display: block;
+        }
+        
+        .doc-card:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .doc-icon { font-size: 32px; margin-bottom: 12px; }
+        .doc-title { font-weight: 700; margin-bottom: 6px; }
+        .doc-desc { color: var(--text-muted); font-size: 13px; }
+        
+        footer {
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: var(--text-muted);
+        }
+        
         footer a { color: var(--text); text-decoration: none; }
         
         @media (max-width: 768px) {
             header { padding: 16px 20px; }
             nav { display: none; }
-            .hero-stats { flex-direction: column; gap: 30px; }
-            .features, .code-section, .install, .comparison { padding: 60px 20px; }
-            table { font-size: 12px; }
-            th, td { padding: 8px; }
+            .section { padding: 60px 20px; }
         }
+        
+        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -349,210 +383,194 @@
             OpenClaw
         </div>
         <nav>
-            <a href="#features">功能</a>
-            <a href="#usecases">用例</a>
-            <a href="#comparison">对比</a>
-            <a href="#install">安装</a>
-            <a href="https://docs.openclaw.ai">文档</a>
+            <a onclick="showSection('home')" class="active">首页</a>
+            <a onclick="showSection('features')">功能</a>
+            <a onclick="showSection('docs')">文档</a>
+            <a onclick="showSection('blog')">博客</a>
             <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub</a>
-            <a href="#" class="btn btn-primary">开始使用</a>
         </nav>
     </header>
     
-    <section class="hero">
-        <div class="hero-badge">✨ 开源免费 · AI 助手</div>
-        <h1>你的私人<span>AI 助手</span><br>运行在本地设备</h1>
-        <p>通过飞书、Telegram、Discord 或任何聊天应用与它对话。清理收件箱、发送邮件，管理日历。默认私有——你的数据只属于你自己。</p>
+    <!-- Home Section -->
+    <div id="home">
+        <section class="hero">
+            <div class="hero-badge">✨ 开源免费 · AI 助手</div>
+            <h1>你的私人<span>AI 助手</span><br>运行在本地设备</h1>
+            <p>通过飞书、Telegram、Discord 或任何聊天应用与它对话。清理收件箱、发送邮件，管理日历。默认私有——你的数据只属于你自己。</p>
+            
+            <div class="hero-buttons">
+                <a href="#install" class="btn btn-primary">立即安装</a>
+                <a href="https://github.com/openclaw/openclaw" target="_blank" class="btn" style="background:var(--dark-light);border:1px solid rgba(255,255,255,0.2)">查看源码</a>
+            </div>
+        </section>
         
-        <div class="hero-buttons">
-            <a href="#install" class="btn btn-primary">立即安装</a>
-            <a href="https://github.com/openclaw/openclaw" target="_blank" class="btn btn-outline">查看源码</a>
-        </div>
+        <section class="section" id="features">
+            <div class="section-title">
+                <h2>为什么选择 OpenClaw？</h2>
+                <p>比传统 AI 更强大，比付费助手更自由</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>运行在你设备上</h3>
+                    <p>Mac、Windows或Linux系统均可运行。支持Anthropic、OpenAI或本地模型。你的数据永远不离开你的设备。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>任意聊天应用</h3>
+                    <p>通过飞书、WhatsApp、Telegram、Discord、Slack或iMessage与它对话。支持私聊和群聊。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>持久记忆</h3>
+                    <p>记住你的一切——你的偏好、你的上下文、你的工作方式。越用越懂你。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>浏览器控制</h3>
+                    <p>自动浏览网页、填写表单、从任何网站提取数据。解放双手，自动化一切。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>完整系统访问</h3>
+                    <p>读写文件、运行Shell命令，执行脚本。完全访问或沙箱模式——由你选择。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>技能与插件</h3>
+                    <p>使用社区技能扩展功能，或自己构建新技能。它甚至可以自己编写技能。</p>
+                </div>
+            </div>
+        </section>
         
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-value">10K+</div>
-                <div class="stat-label">GitHub Stars</div>
+        <section class="section" style="background: var(--dark-light);">
+            <div class="section-title">
+                <h2>🔥 热门用例</h2>
+                <p>看看大家都在用 OpenClaw 做什么</p>
             </div>
-            <div class="stat">
-                <div class="stat-value">50+</div>
-                <div class="stat-label">集成平台</div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>邮件自动处理</h3>
+                    <p>自动分类、回复邮件，总结 newsletters。节省每天1小时阅读时间。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>日历管理</h3>
+                    <p>自动安排会议、发送邀请、提醒日程。智能助手帮你管理时间。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>游戏开发</h3>
+                    <p>AI 自动生成游戏代码、修复bug。7分钟开发一个游戏。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>量化交易</h3>
+                    <p>自动监控行情，执行交易策略。模拟盘测试策略无风险。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>市场调研</h3>
+                    <p>自动挖掘 Reddit/X 真实痛点，帮你发现产品机会。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>自动化工作流</h3>
+                    <p>连接 n8n、Zapier，构建自动化流程。处理重复任务不再烦恼。</p>
+                </div>
             </div>
-            <div class="stat">
-                <div class="stat-value">100%</div>
-                <div class="stat-label">开源免费</div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="features" id="features">
-        <div class="section-title">
-            <h2>为什么选择 OpenClaw？</h2>
-            <p>比传统 AI 更强大，比付费助手更自由</p>
-        </div>
+        </section>
         
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">💻</div>
-                <h3>运行在你设备上</h3>
-                <p>Mac、Windows或Linux系统均可运行。支持Anthropic、OpenAI或本地模型。你的数据永远不离开你的设备。</p>
+        <section class="section">
+            <div class="section-title">
+                <h2>📊 OpenClaw vs 其他 AI 助手</h2>
             </div>
             
-            <div class="feature-card">
-                <div class="feature-icon">💬</div>
-                <h3>任意聊天应用</h3>
-                <p>通过飞书、WhatsApp、Telegram、Discord、Slack或iMessage与它对话。支持私聊和群聊。</p>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>功能</th>
+                            <th>OpenClaw</th>
+                            <th>ChatGPT</th>
+                            <th>Claude AI</th>
+                            <th>付费助手</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>运行在本地</td>
+                            <td><span class="check">✅ 完全私有</span></td>
+                            <td><span class="cross">❌ 云端</span></td>
+                            <td><span class="cross">❌ 云端</span></td>
+                            <td><span class="cross">❌ 云端</span></td>
+                        </tr>
+                        <tr>
+                            <td>持久记忆</td>
+                            <td><span class="check">✅ 永久</span></td>
+                            <td>⚠️ 会话级</td>
+                            <td>⚠️ 会话级</td>
+                            <td>⚠️ 有限</td>
+                        </tr>
+                        <tr>
+                            <td>定时自动执行</td>
+                            <td><span class="check">✅ Cron</span></td>
+                            <td><span class="cross">❌ 手动</span></td>
+                            <td><span class="cross">❌ 手动</span></td>
+                            <td>⚠️ 部分</td>
+                        </tr>
+                        <tr>
+                            <td>浏览器控制</td>
+                            <td><span class="check">✅ 支持</span></td>
+                            <td>⚠️ 插件</td>
+                            <td>⚠️ 插件</td>
+                            <td>⚠️ 部分</td>
+                        </tr>
+                        <tr>
+                            <td>系统命令</td>
+                            <td><span class="check">✅ 支持</span></td>
+                            <td><span class="cross">❌ 不支持</span></td>
+                            <td><span class="cross">❌ 不支持</span></td>
+                            <td><span class="cross">❌ 不支持</span></td>
+                        </tr>
+                        <tr>
+                            <td>中国平台集成</td>
+                            <td><span class="check">✅ 飞书/钉钉</span></td>
+                            <td><span class="cross">❌ 无</span></td>
+                            <td><span class="cross">❌ 无</span></td>
+                            <td>⚠️ 有限</td>
+                        </tr>
+                        <tr>
+                            <td>价格</td>
+                            <td><span style="color:var(--green)">🆓 免费</span></td>
+                            <td>🆓/$20</td>
+                            <td>🆓/$20</td>
+                            <td>$20+</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🧠</div>
-                <h3>持久记忆</h3>
-                <p>记住你的一切——你的偏好、你的上下文、你的工作方式。越用越懂你。</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <h3>浏览器控制</h3>
-                <p>自动浏览网页、填写表单、从任何网站提取数据。解放双手，自动化一切。</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🔧</div>
-                <h3>完整系统访问</h3>
-                <p>读写文件、运行Shell命令，执行脚本。完全访问或沙箱模式——由你选择。</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🔌</div>
-                <h3>技能与插件</h3>
-                <p>使用社区技能扩展功能，或自己构建新技能。它甚至可以自己编写技能。</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="features features-alt" id="usecases">
-        <div class="section-title">
-            <h2>🔥 热门用例</h2>
-            <p>看看大家都在用 OpenClaw 做什么</p>
-        </div>
+        </section>
         
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📧</div>
-                <h3>邮件自动处理</h3>
-                <p>自动分类、回复邮件，总结 newsletters。节省每天1小时阅读时间。</p>
+        <section class="section" id="install">
+            <div class="section-title">
+                <h2>🚀 一行命令开始</h2>
+                <p>自动安装 Node.js 和所有依赖</p>
             </div>
             
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3>日历管理</h3>
-                <p>自动安排会议、发送邀请、提醒日程。智能助手帮你管理时间。</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h3>自动化工作流</h3>
-                <p>连接 n8n、Zapier，构建自动化流程。处理重复任务不再烦恼。</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎮</div>
-                <h3>游戏开发</h3>
-                <p>AI 自动生成游戏代码、修复bug。7分钟开发一个游戏。</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>量化交易</h3>
-                <p>自动监控行情、执行交易策略。模拟盘测试策略无风险。</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <h3>市场调研</h3>
-                <p>自动挖掘 Reddit/X 真实痛点，帮你发现产品机会。</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="comparison" id="comparison">
-        <div class="section-title">
-            <h2>📊 OpenClaw vs 其他 AI 助手</h2>
-        </div>
-        
-        <div class="comparison-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>功能</th>
-                        <th>OpenClaw</th>
-                        <th>ChatGPT</th>
-                        <th>Claude AI</th>
-                        <th>付费助手</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>运行在本地</td>
-                        <td><span class="check">✅ 完全私有</span></td>
-                        <td><span class="cross">❌ 云端</span></td>
-                        <td><span class="cross">❌ 云端</span></td>
-                        <td><span class="cross">❌ 云端</span></td>
-                    </tr>
-                    <tr>
-                        <td>持久记忆</td>
-                        <td><span class="check">✅ 永久</span></td>
-                        <td>⚠️ 会话级</td>
-                        <td>⚠️ 会话级</td>
-                        <td>⚠️ 有限</td>
-                    </tr>
-                    <tr>
-                        <td>定时自动执行</td>
-                        <td><span class="check">✅ Cron</span></td>
-                        <td><span class="cross">❌ 手动</span></td>
-                        <td><span class="cross">❌ 手动</span></td>
-                        <td>⚠️ 部分</td>
-                    </tr>
-                    <tr>
-                        <td>浏览器控制</td>
-                        <td><span class="check">✅ 支持</span></td>
-                        <td>⚠️ 插件</td>
-                        <td>⚠️ 插件</td>
-                        <td>⚠️ 部分</td>
-                    </tr>
-                    <tr>
-                        <td>系统命令</td>
-                        <td><span class="check">✅ 支持</span></td>
-                        <td><span class="cross">❌ 不支持</span></td>
-                        <td><span class="cross">❌ 不支持</span></td>
-                        <td><span class="cross">❌ 不支持</span></td>
-                    </tr>
-                    <tr>
-                        <td>中国平台集成</td>
-                        <td><span class="check">✅ 飞书/钉钉</span></td>
-                        <td><span class="cross">❌ 无</span></td>
-                        <td><span class="cross">❌ 无</span></td>
-                        <td>⚠️ 有限</td>
-                    </tr>
-                    <tr>
-                        <td>价格</td>
-                        <td><span style="color:var(--green)">🆓 免费</span></td>
-                        <td>🆓/$20</td>
-                        <td>🆓/$20</td>
-                        <td>$20+</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-    
-    <section class="code-section" id="install">
-        <div class="section-title">
-            <h2>一行命令开始</h2>
-            <p>自动安装 Node.js 和所有依赖</p>
-        </div>
-        
-        <div class="code-container">
             <div class="code-block">
                 <div class="code-header">
                     <span class="code-dot red"></span>
@@ -564,25 +582,130 @@
                     <span style="color: #60a5fa;">curl</span> -fsSL https://<span style="color: #4ade80;">clawd.org.cn/install.sh</span> | <span style="color: #c084fc;">bash</span>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <section class="install">
-        <div class="install-box">
-            <h2>立即开始</h2>
-            <p>开源免费，无需信用卡。在你的设备上运行，数据完全私有。</p>
-            <div class="install-code">
-                <span id="installCmd">curl -fsSL https://clawd.org.cn/install.sh | bash</span>
-                <button class="copy-btn" onclick="copyCode()">复制</button>
+            
+            <div class="install-box" style="margin-top: 40px;">
+                <h3 style="margin-bottom: 10px;">立即开始</h3>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">开源免费，无需信用卡。在你的设备上运行，数据完全私有。</p>
+                <div class="install-code">
+                    <span id="installCmd">curl -fsSL https://clawd.org.cn/install.sh | bash</span>
+                    <button class="copy-btn" onclick="copyCode()">复制</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+    
+    <!-- Docs Section -->
+    <div id="docs" class="hidden">
+        <section class="section">
+            <div class="section-title">
+                <h2>📖 文档中心</h2>
+                <p>快速上手 OpenClaw</p>
+            </div>
+            
+            <div class="docs-grid">
+                <a href="https://docs.openclaw.ai" target="_blank" class="doc-card">
+                    <div class="doc-icon">🚀</div>
+                    <div class="doc-title">快速开始</div>
+                    <div class="doc-desc">5分钟快速上手指南</div>
+                </a>
+                
+                <a href="https://docs.openclaw.ai/install" target="_blank" class="doc-card">
+                    <div class="doc-icon">💻</div>
+                    <div class="doc-title">安装配置</div>
+                    <div class="doc-desc">各平台安装详细教程</div>
+                </a>
+                
+                <a href="https://docs.openclaw.ai/skills" target="_blank" class="doc-card">
+                    <div class="doc-icon">🔌</div>
+                    <div class="doc-title">技能市场</div>
+                    <div class="doc-desc">社区技能插件</div>
+                </a>
+                
+                <a href="https://docs.openclaw.ai/channels" target="_blank" class="doc-card">
+                    <div class="doc-icon">💬</div>
+                    <div class="doc-title">消息渠道</div>
+                    <div class="doc-desc">飞书/Telegram/Discord配置</div>
+                </a>
+                
+                <a href="https://docs.openclaw.ai/config" target="_blank" class="doc-card">
+                    <div class="doc-icon">⚙️</div>
+                    <div class="doc-title">配置参考</div>
+                    <div class="doc-desc">完整配置项说明</div>
+                </a>
+                
+                <a href="https://clawhub.com" target="_blank" class="doc-card">
+                    <div class="doc-icon">🛒</div>
+                    <div class="doc-title">技能商店</div>
+                    <div class="doc-desc">发现更多技能</div>
+                </a>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Blog Section -->
+    <div id="blog" class="hidden">
+        <section class="section">
+            <div class="section-title">
+                <h2>📝 博客更新</h2>
+                <p>最新动态和使用教程</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-date">2026-03-01</div>
+                    <div class="blog-title">OpenClaw 中文社区上线！</div>
+                    <div class="blog-desc">专为中文用户打造的 OpenClaw 指南，包含飞书、钉钉等国内平台集成教程。</div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-date">2026-02-28</div>
+                    <div class="blog-title">7分钟开发一个游戏</div>
+                    <div class="blog-desc">如何使用 OpenClaw 自动开发 HTML5 游戏，从需求到上线全流程。</div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-date">2026-02-25</div>
+                    <div class="blog-title">量化交易模拟盘实战</div>
+                    <div class="blog-desc">使用 OpenClaw 构建自动化交易策略，模拟盘测试稳定盈利方案。</div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-date">2026-02-20</div>
+                    <div class="blog-title">飞书机器人配置指南</div>
+                    <div class="blog-desc">一步一步教你配置飞书 AI 助手，实现自动回复和任务处理。</div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-date">2026-02-15</div>
+                    <div class="blog-title">市场调研自动化</div>
+                    <div class="blog-desc">用 AI 自动挖掘 Reddit 真实痛点，发现产品机会。</div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-date">2026-02-10</div>
+                    <div class="blog-title">OpenClaw vs 其他 AI 助手</div>
+                    <div class="blog-desc">全面对比 OpenClaw 与 ChatGPT、Claude 的功能差异。</div>
+                </div>
+            </div>
+        </section>
+    </div>
     
     <footer>
         <p>© 2026 OpenClaw 中文社区 · <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub</a> · <a href="https://docs.openclaw.ai" target="_blank">文档</a></p>
     </footer>
     
     <script>
+        function showSection(section) {
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('docs').classList.add('hidden');
+            document.getElementById('blog').classList.add('hidden');
+            
+            document.getElementById(section).classList.remove('hidden');
+            
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
         function copyCode() {
             const code = document.getElementById('installCmd').textContent;
             navigator.clipboard.writeText(code);
