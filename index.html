@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenClaw 中文社区 - 开源免费 AI 助手</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6366f1;
@@ -14,6 +14,8 @@
             --dark-light: #1e293b;
             --text: #f8fafc;
             --text-muted: #94a3b8;
+            --green: #22c55e;
+            --red: #ef4444;
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
         
@@ -27,7 +29,6 @@
             overflow-x: hidden;
         }
         
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -56,7 +57,6 @@
             50% { transform: translate(-2%, 2%) rotate(1deg); }
         }
         
-        /* Header */
         header {
             padding: 20px 40px;
             display: flex;
@@ -81,24 +81,10 @@
             gap: 10px;
         }
         
-        .logo-icon {
-            font-size: 32px;
-            -webkit-text-fill-color: initial;
-        }
+        .logo-icon { font-size: 32px; -webkit-text-fill-color: initial; }
         
-        nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-        
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
+        nav { display: flex; gap: 30px; align-items: center; }
+        nav a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: var(--text); }
         
         .btn {
@@ -133,7 +119,6 @@
             background: rgba(99, 102, 241, 0.1);
         }
         
-        /* Hero */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -201,43 +186,16 @@
             animation: fadeInUp 0.6s ease 0.4s both;
         }
         
-        .stat {
-            text-align: center;
-        }
+        .stat { text-align: center; }
+        .stat-value { font-size: 40px; font-weight: 800; color: var(--primary); }
+        .stat-label { color: var(--text-muted); font-size: 14px; }
         
-        .stat-value {
-            font-size: 40px;
-            font-weight: 800;
-            color: var(--primary);
-        }
+        .features { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+        .features-alt { background: var(--dark-light); }
         
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-        
-        /* Features */
-        .features {
-            padding: 100px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 40px;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-        
-        .section-title p {
-            color: var(--text-muted);
-            font-size: 18px;
-        }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 40px; font-weight: 800; margin-bottom: 16px; }
+        .section-title p { color: var(--text-muted); font-size: 18px; }
         
         .features-grid {
             display: grid;
@@ -271,26 +229,35 @@
             margin-bottom: 20px;
         }
         
-        .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-        }
+        .feature-card h3 { font-size: 22px; margin-bottom: 12px; }
+        .feature-card p { color: var(--text-muted); font-size: 15px; }
         
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
+        .comparison { padding: 100px 40px; background: var(--dark-light); }
+        .comparison-table { overflow-x: auto; }
         
-        /* Code Section */
-        .code-section {
-            padding: 100px 40px;
-            background: var(--dark-light);
-        }
-        
-        .code-container {
-            max-width: 900px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            max-width: 1000px;
             margin: 0 auto;
         }
+        
+        th, td {
+            padding: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        th { background: var(--dark); font-weight: 700; }
+        th:first-child { text-align: left; }
+        td:first-child { text-align: left; font-weight: 500; }
+        
+        .check { color: var(--green); font-size: 20px; }
+        .cross { color: var(--red); font-size: 20px; }
+        
+        .code-section { padding: 100px 40px; }
+        
+        .code-container { max-width: 900px; margin: 0 auto; }
         
         .code-block {
             background: #0a0a0a;
@@ -307,12 +274,7 @@
             gap: 8px;
         }
         
-        .code-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        
+        .code-dot { width: 12px; height: 12px; border-radius: 50%; }
         .code-dot.red { background: #ef4444; }
         .code-dot.yellow { background: #eab308; }
         .code-dot.green { background: #22c55e; }
@@ -325,16 +287,7 @@
             overflow-x: auto;
         }
         
-        .code-content .comment { color: #6b7280; }
-        .code-content .keyword { color: #c084fc; }
-        .code-content .string { color: #4ade80; }
-        .code-content .function { color: #60a5fa; }
-        
-        /* Install */
-        .install {
-            padding: 100px 40px;
-            text-align: center;
-        }
+        .install { padding: 100px 40px; text-align: center; }
         
         .install-box {
             max-width: 700px;
@@ -345,15 +298,8 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
         
-        .install h2 {
-            font-size: 36px;
-            margin-bottom: 16px;
-        }
-        
-        .install p {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
+        .install h2 { font-size: 36px; margin-bottom: 16px; }
+        .install p { color: var(--text-muted); margin-bottom: 30px; }
         
         .install-code {
             background: #0a0a0a;
@@ -376,31 +322,21 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
+            white-space: nowrap;
         }
         
-        .copy-btn:hover {
-            background: var(--primary-dark);
-        }
+        .copy-btn:hover { background: var(--primary-dark); }
         
-        /* Footer */
-        footer {
-            padding: 60px 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-            color: var(--text-muted);
-        }
+        footer { padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: var(--text-muted); }
+        footer a { color: var(--text); text-decoration: none; }
         
-        footer a {
-            color: var(--text);
-            text-decoration: none;
-        }
-        
-        /* Responsive */
         @media (max-width: 768px) {
             header { padding: 16px 20px; }
             nav { display: none; }
             .hero-stats { flex-direction: column; gap: 30px; }
-            .features, .code-section, .install { padding: 60px 20px; }
+            .features, .code-section, .install, .comparison { padding: 60px 20px; }
+            table { font-size: 12px; }
+            th, td { padding: 8px; }
         }
     </style>
 </head>
@@ -414,6 +350,8 @@
         </div>
         <nav>
             <a href="#features">功能</a>
+            <a href="#usecases">用例</a>
+            <a href="#comparison">对比</a>
             <a href="#install">安装</a>
             <a href="https://docs.openclaw.ai">文档</a>
             <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub</a>
@@ -422,11 +360,9 @@
     </header>
     
     <section class="hero">
-        <div class="hero-badge">
-            ✨ 开源免费 · AI 助手
-        </div>
+        <div class="hero-badge">✨ 开源免费 · AI 助手</div>
         <h1>你的私人<span>AI 助手</span><br>运行在本地设备</h1>
-        <p>通过飞书、Telegram、Discord 或任何聊天应用与它对话。清理收件箱、发送邮件、管理日历。默认私有——你的数据只属于你自己。</p>
+        <p>通过飞书、Telegram、Discord 或任何聊天应用与它对话。清理收件箱、发送邮件，管理日历。默认私有——你的数据只属于你自己。</p>
         
         <div class="hero-buttons">
             <a href="#install" class="btn btn-primary">立即安装</a>
@@ -483,7 +419,7 @@
             <div class="feature-card">
                 <div class="feature-icon">🔧</div>
                 <h3>完整系统访问</h3>
-                <p>读写文件、运行Shell命令、执行脚本。完全访问或沙箱模式——由你选择。</p>
+                <p>读写文件、运行Shell命令，执行脚本。完全访问或沙箱模式——由你选择。</p>
             </div>
             
             <div class="feature-card">
@@ -494,7 +430,123 @@
         </div>
     </section>
     
-    <section class="code-section">
+    <section class="features features-alt" id="usecases">
+        <div class="section-title">
+            <h2>🔥 热门用例</h2>
+            <p>看看大家都在用 OpenClaw 做什么</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📧</div>
+                <h3>邮件自动处理</h3>
+                <p>自动分类、回复邮件，总结 newsletters。节省每天1小时阅读时间。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>日历管理</h3>
+                <p>自动安排会议、发送邀请、提醒日程。智能助手帮你管理时间。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3>自动化工作流</h3>
+                <p>连接 n8n、Zapier，构建自动化流程。处理重复任务不再烦恼。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>游戏开发</h3>
+                <p>AI 自动生成游戏代码、修复bug。7分钟开发一个游戏。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>量化交易</h3>
+                <p>自动监控行情、执行交易策略。模拟盘测试策略无风险。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>市场调研</h3>
+                <p>自动挖掘 Reddit/X 真实痛点，帮你发现产品机会。</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="comparison" id="comparison">
+        <div class="section-title">
+            <h2>📊 OpenClaw vs 其他 AI 助手</h2>
+        </div>
+        
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>功能</th>
+                        <th>OpenClaw</th>
+                        <th>ChatGPT</th>
+                        <th>Claude AI</th>
+                        <th>付费助手</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>运行在本地</td>
+                        <td><span class="check">✅ 完全私有</span></td>
+                        <td><span class="cross">❌ 云端</span></td>
+                        <td><span class="cross">❌ 云端</span></td>
+                        <td><span class="cross">❌ 云端</span></td>
+                    </tr>
+                    <tr>
+                        <td>持久记忆</td>
+                        <td><span class="check">✅ 永久</span></td>
+                        <td>⚠️ 会话级</td>
+                        <td>⚠️ 会话级</td>
+                        <td>⚠️ 有限</td>
+                    </tr>
+                    <tr>
+                        <td>定时自动执行</td>
+                        <td><span class="check">✅ Cron</span></td>
+                        <td><span class="cross">❌ 手动</span></td>
+                        <td><span class="cross">❌ 手动</span></td>
+                        <td>⚠️ 部分</td>
+                    </tr>
+                    <tr>
+                        <td>浏览器控制</td>
+                        <td><span class="check">✅ 支持</span></td>
+                        <td>⚠️ 插件</td>
+                        <td>⚠️ 插件</td>
+                        <td>⚠️ 部分</td>
+                    </tr>
+                    <tr>
+                        <td>系统命令</td>
+                        <td><span class="check">✅ 支持</span></td>
+                        <td><span class="cross">❌ 不支持</span></td>
+                        <td><span class="cross">❌ 不支持</span></td>
+                        <td><span class="cross">❌ 不支持</span></td>
+                    </tr>
+                    <tr>
+                        <td>中国平台集成</td>
+                        <td><span class="check">✅ 飞书/钉钉</span></td>
+                        <td><span class="cross">❌ 无</span></td>
+                        <td><span class="cross">❌ 无</span></td>
+                        <td>⚠️ 有限</td>
+                    </tr>
+                    <tr>
+                        <td>价格</td>
+                        <td><span style="color:var(--green)">🆓 免费</span></td>
+                        <td>🆓/$20</td>
+                        <td>🆓/$20</td>
+                        <td>$20+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <section class="code-section" id="install">
         <div class="section-title">
             <h2>一行命令开始</h2>
             <p>自动安装 Node.js 和所有依赖</p>
@@ -508,19 +560,19 @@
                     <span class="code-dot green"></span>
                 </div>
                 <div class="code-content">
-                    <span class="comment"># Linux / macOS / WSL</span><br>
-                    <span class="function">curl</span> -fsSL https://<span class="string">clawd.org.cn/install.sh</span> | <span class="keyword">bash</span>
+                    <span style="color: #6b7280;"># Linux / macOS / WSL</span><br>
+                    <span style="color: #60a5fa;">curl</span> -fsSL https://<span style="color: #4ade80;">clawd.org.cn/install.sh</span> | <span style="color: #c084fc;">bash</span>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="install" id="install">
+    <section class="install">
         <div class="install-box">
             <h2>立即开始</h2>
             <p>开源免费，无需信用卡。在你的设备上运行，数据完全私有。</p>
             <div class="install-code">
-                <span>curl -fsSL https://clawd.org.cn/install.sh | bash</span>
+                <span id="installCmd">curl -fsSL https://clawd.org.cn/install.sh | bash</span>
                 <button class="copy-btn" onclick="copyCode()">复制</button>
             </div>
         </div>
@@ -532,7 +584,7 @@
     
     <script>
         function copyCode() {
-            const code = 'curl -fsSL https://clawd.org.cn/install.sh | bash';
+            const code = document.getElementById('installCmd').textContent;
             navigator.clipboard.writeText(code);
             const btn = document.querySelector('.copy-btn');
             btn.textContent = '已复制!';
